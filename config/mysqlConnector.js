@@ -3,12 +3,12 @@ const util = require('util');
 const { nibbleHost, nibbleUser, nibblePassword, nibbleDatabase } = require('./config');
 
 let pool = mysql.createPool({
-    connectionLimit : 10,
+    connectionLimit : 50,
     host     : nibbleHost,
     user     : nibbleUser,
     password : nibblePassword,
     database : nibbleDatabase,
-    debug    :  true
+    debug    :  false
 });
 
 pool.query = util.promisify(pool.query);
