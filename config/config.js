@@ -8,5 +8,5 @@ module.exports = {
   AWSAccessKeyId: process.env.AWSAccessKeyId,
   AWSSecretKey:   process.env.AWSSecretKey,
   TokenSecret:    process.env.TOKENSECRET,
-  SaltRounds:        process.env.SALTROUNDS
+  SaltRounds:     Number(process.env.SALTROUNDS)
 };
