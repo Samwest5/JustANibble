@@ -6,5 +6,7 @@ module.exports = {
   nibblePassword: process.env.PASSWORD,
   nibbleDatabase: process.env.DATABASE,
   AWSAccessKeyId: process.env.AWSAccessKeyId,
-  AWSSecretKey:   process.env.AWSSecretKey
+  AWSSecretKey:   process.env.AWSSecretKey,
+  TokenSecret:    process.env.TOKENSECRET,
+  SaltRounds:        process.env.SALTROUNDS
 };

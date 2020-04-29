@@ -31,3 +31,5 @@ CREATE TABLE IF NOT EXISTS likes (
 		ON UPDATE CASCADE
         ON DELETE CASCADE
 );
+
+ALTER TABLE users ADD CONSTRAINT unique_username UNIQUE (user_name);
