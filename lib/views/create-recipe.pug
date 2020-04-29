@@ -1,0 +1,62 @@
+extends layout.pug
+
+block content
+    main(class='container')
+        form(method="POST")
+            div(class='form-row')
+                div(class='form-group col-md-8')
+                    label(for='recipe-name') Recipe Name
+                    input(type='text' class='form-control' id='recipe-name' name='recipe-name' placeholder='Recipe Name Here')
+                    div(class='invalid-feedback') Please enter a recipe name.
+                div(class='form-group col-md-4')
+                    label(for='difficulty') Difficulty
+                    select(id='difficulty' class='form-control')
+                        option(selected disabled) Choose ...
+                        option Easy
+                        option Medium
+                        option Hard
+                    div(class='invalid-feedback') Please select a difficulty level.
+            br
+            div(class='form-inline')
+                div(class='input-group col-md-3')
+                    div(class='input-group-prepend')
+                        span(class='input-group-text' id='prepTimePrepend') Prep Time:
+                    input(type='text' class='form-control' id='prepTime' placeholder='DD:HH:MM' aria-describedby='prepTimePrepend')
+                    div(class='invalid-feedback') Please enter prep time.
+                div(class='input-group col-md-3')
+                    div(class='input-group-prepend')
+                        span(class='input-group-text' id='cookTimePrepend') Cook Time:
+                    input(type='text' class='form-control' id='cookTime' placeholder='DD:HH:MM' aria-describedby='cookTimePrepend')
+                    div(class='invalid-feedback') Please enter cook time.
+                div(class='input-group col-md-3')
+                    div(class='input-group-prepend')
+                        span(class='input-group-text' id='totalTimePrepend') Total Time:
+                    input(type='text' class='form-control' id='totalTime' placeholder='DD:HH:MM' aria-describedby='totalTimePrepend')
+                    div(class='invalid-feedback') Please enter total time.
+                div(class='col-md-3 form-group')
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='' id='gluten-free')
+                        label(class='form-check-label' for='gluten-free') Gluten Free
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='' id='dairy-free')
+                        label(class='form-check-label' for='dairy-free') Diary Free
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='' id='vegetarian')
+                        label(class='form-check-label' for='vegatarian') Vegetarian
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='' id='vegan')
+                        label(class='form-check-label' for='vegan') Vegan
+            br
+            br
+            div(class='form-row')
+                div(class='form-group col-md-4')
+                    label(for="ingredients") List of Ingredients
+                    textarea(class='form-control' id='ingredients' name='ingredients' rows='20' placeholder='Ingredient 1\n\nIngredient 2\n\nIngredient 3\n\netc...')
+                div(class='form-group col-md-8')
+                    label(for='steps') List of Steps
+                    textarea(class='form-control' id='steps' name='steps' rows='20' placeholder='Step 1\n\nStep 2\n\nStep 3\n\netc...')
+            div(class='row')
+                div(class='col-md-6')
+                    button(type='reset' class='btn btn-block btn-outline-secondary') Reset
+                div(class='col-md-6')
+                    button(type='submit' class='btn btn-block btn-primary') Submit

@@ -1,7 +1,33 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        title= title
+        meta(charset='utf-8')
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+        link(rel='stylesheet' type='text/css' href='/stylesheets/style.css')
+        
+    body
+        div(class='container-fluid')
+            header(class='bg-orange')
+                div(class='log')
+                    if loggedin
+                        a(href='/') #[username]
+                            i(class='fas fa-sign-out-alt')
+                    else
+                        a(href="/recipes/create") Login
+                            i(class="fas fa-sign-in-alt")
+                a(href='/')
+                    h1 Just A Nibble
+                nav(class='navbar')
+                    div(class='nav-center')
+                        a(class='nav-link' href='/recipes') Satiate
+                        a(class='nav-link' href='/drinks') Quench
+                        a(class='nav-link' href='/about') About
+            block content
+            footer
+                p Copyright © 2020
+
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+        script(src="https://kit.fontawesome.com/a86f0de539.js" crossorigin="anonymous")
+        script
+            include ../public/javascripts/create-recipe.js
