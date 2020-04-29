@@ -6,28 +6,28 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS recipes (
-  recipe_id INT AUTO_INCREMENT PRIMARY KEY,
-  recipe_name VARCHAR(255) NOT NULL,
-  image_path VARCHAR(255) NOT NULL,
-  prep_time TIME NOT NULL,
-  cook_time TIME NOT NULL,
-  overall_time TIME NOT NULL,
-  difficulty VARCHAR(6) NOT NULL,
-  chef_favorite BOOLEAN NOT NULL DEFAULT FALSE,
-  author VARCHAR(255) NOT NULL,
-  FOREIGN KEY (author) REFERENCES users (user_name),
-  CHECK (difficulity LIKE "Easy" OR difficulty LIKE "MEDIUM" OR difficulty LIKE "HARD")
+	recipe_id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_name VARCHAR(255) NOT NULL,
+    image_path VARCHAR(255) NOT NULL,
+    prep_time TIME NOT NULL,
+    cook_time TIME NOT NULL,
+    overall_time TIME NOT NULL,
+    difficulty VARCHAR(6) NOT NULL,
+    favorite BOOLEAN NOT NULL DEFAULT FALSE,
+    author_id INT NOT NULL,
+    FOREIGN KEY (author_id) REFERENCES users (user_id),
+    CHECK (difficulity LIKE "Easy" OR difficulty LIKE "MEDIUM" OR difficulty LIKE "HARD")
 );
 
 CREATE TABLE IF NOT EXISTS likes (
 	likes_id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  recipe_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users (user_id)
+    user_id INT NOT NULL,
+    recipe_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
 		ON UPDATE CASCADE
-    ON DELETE CASCADE
+        ON DELETE CASCADE
 	,
 	FOREIGN KEY (recipe_id) REFERENCES recipes (recipe_id)
 		ON UPDATE CASCADE
-    ON DELETE CASCADE
+        ON DELETE CASCADE
 );
