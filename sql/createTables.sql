@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS recipes (
     favorite BOOLEAN NOT NULL DEFAULT FALSE,
     author_id INT NOT NULL,
     FOREIGN KEY (author_id) REFERENCES users (user_id),
-    CHECK (difficulity LIKE "Easy" OR difficulty LIKE "MEDIUM" OR difficulty LIKE "HARD")
+    CHECK (difficulity LIKE "EASY" OR difficulty LIKE "MEDIUM" OR difficulty LIKE "HARD")
 );
 
 CREATE TABLE IF NOT EXISTS likes (
