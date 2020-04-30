@@ -3,3 +3,17 @@ extends layout.pug
 block content
     main(class='container')
         form(method="POST")
+            div(class='form-group')
+                label(for='username') Username
+                input(type='text' class='form-control' id='username' name='username' placeholder='username')
+                div(class='invalid-feedback') Username already exists.
+            div(class='form-group')
+                label(for='password') Password
+                small(class='text-muted')  8 or more characters.
+                input(type='password' class='form-control' id='password' name='password' placeholder='password')
+                div(class='invalid-feedback') Does not have enough characters.
+            div(class='row')
+                div(class='col-md-6')
+                    button(class='btn btn-block btn-outline-secondary' id="register") Register
+                div(class='col-md-6')
+                    button(class='btn btn-block btn-primary' id='login') Login

@@ -7,7 +7,6 @@ html
         link(rel='stylesheet' type='text/css' href='/stylesheets/layout.css')
         if title == "Create Recipe"
             link(rel='stylesheet' type='text/css' href='/stylesheets/create-recipe.css')
-        
     body
         div(class='container-fluid')
             header
@@ -16,7 +15,7 @@ html
                         a(href='/') #[username]
                             i(class='fas fa-sign-out-alt')
                     else
-                        a(href="/recipes/create") Login
+                        a(href="/auth/login") Login
                             i(class="fas fa-sign-in-alt")
                 a(href='/')
                     h1 Just A Nibble
@@ -31,4 +30,6 @@ html
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
         script(src="https://kit.fontawesome.com/a86f0de539.js" crossorigin="anonymous")
         script
-            include ../public/javascripts/create-recipe.js
+            include ../public/javascripts/layout.js
+        script 
+            include ../public/javascripts/login.js
