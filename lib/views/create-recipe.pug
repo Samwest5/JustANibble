@@ -16,7 +16,6 @@ block content
                         option Medium
                         option Hard
                     div(class='invalid-feedback') Please select a difficulty level.
-            br
             div(class='form-inline')
                 div(class='input-group col-md-3')
                     div(class='input-group-prepend')
@@ -47,7 +46,6 @@ block content
                         input(class='form-check-input' type='checkbox' value='' id='vegan')
                         label(class='form-check-label' for='vegan') Vegan
             br
-            br
             div(class='form-row')
                 div(class='form-group col-md-4')
                     label(for="ingredients") List of Ingredients
@@ -55,8 +53,14 @@ block content
                 div(class='form-group col-md-8')
                     label(for='steps') List of Steps
                     textarea(class='form-control' id='steps' name='steps' rows='20' placeholder='Step 1\n\nStep 2\n\nStep 3\n\netc...')
+            div(class='custom-file')
+                input(type='file' class='custom-file-input' id='recipe-img')
+                label(class='custom-file-label' for='recipe-img') Choose image
+            br
+            br
             div(class='row')
                 div(class='col-md-6')
                     button(type='reset' class='btn btn-block btn-outline-secondary') Reset
                 div(class='col-md-6')
                     button(type='submit' class='btn btn-block btn-primary') Submit
+            br
