@@ -7,17 +7,24 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS recipes (
 	recipe_id INT AUTO_INCREMENT PRIMARY KEY,
+	author_id INT NOT NULL,
     recipe_name VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     image_path VARCHAR(255) NOT NULL,
     prep_time TIME NOT NULL,
     cook_time TIME NOT NULL,
     overall_time TIME NOT NULL,
     difficulty VARCHAR(6) NOT NULL,
-    favorite BOOLEAN NOT NULL DEFAULT FALSE,
-    author_id INT NOT NULL,
+    is_vegan BOOLEAN NOT NULL DEFAULT FALSE,
+    is_vegetarian BOOLEAN NOT NULL DEFAULT FALSE,
+    is_dairy_free BOOLEAN NOT NULL DEFAULT FALSE,
+    is_gluten_free BOOLEAN NOT NULL DEFAULT FALSE,
+    is_favorite BOOLEAN NOT NULL DEFAULT FALSE,
+    recipe_text JSON NOT NULL,
     FOREIGN KEY (author_id) REFERENCES users (user_id),
     CHECK (difficulity LIKE "EASY" OR difficulty LIKE "MEDIUM" OR difficulty LIKE "HARD")
 );
+
 
 CREATE TABLE IF NOT EXISTS likes (
 	likes_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -31,5 +38,3 @@ CREATE TABLE IF NOT EXISTS likes (
 		ON UPDATE CASCADE
         ON DELETE CASCADE
 );
-
-ALTER TABLE users ADD CONSTRAINT unique_username UNIQUE (user_name);
