@@ -1,5 +1,8 @@
 extends layout.pug
 
+block link
+    -var active = 'Create Recipe';
+
 block content
     main(class='container')
         form(method="POST" enctype='multipart/form-data')

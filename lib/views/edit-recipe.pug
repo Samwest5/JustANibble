@@ -1,0 +1,71 @@
+extends layout.pug
+
+block link
+    -var active = 'Edit Recipe';
+
+block content
+    main(class='container')
+        form(method="POST" enctype='multipart/form-data')
+            div(class='form-row')
+                div(class='form-group col-md-8')
+                    label(for='recipe-name') Recipe Name
+                    input(type='text' class='form-control' id='recipeName' name='recipeName' placeholder='Recipe Name Here' required)
+                    div(class='invalid-feedback') Please enter a recipe name.
+                div(class='form-group col-md-4')
+                    label(for='difficulty') Difficulty
+                    select(id='difficulty' class='form-control' name='difficulty' required)
+                        option(name='difficulty' value='' selected disabled) Choose ...
+                        option(name='difficulty' value='Easy') Easy
+                        option(name='difficulty' value='Medium') Medium
+                        option(name='difficulty' value='Hard') Hard
+                    div(class='invalid-feedback') Please select a difficulty level.
+            div(class='form-inline')
+                div(class='input-group col-lg-3')
+                    div(class='input-group-prepend')
+                        span(class='input-group-text' id='prepTimePrepend') Prep Time:
+                    input(type='text' class='form-control' id='prepTime' name='prepTime' placeholder='HH:MM' aria-describedby='prepTimePrepend' required)
+                    div(class='invalid-feedback') Please enter prep time.
+                div(class='input-group col-lg-3')
+                    div(class='input-group-prepend')
+                        span(class='input-group-text' id='cookTimePrepend') Cook Time:
+                    input(type='text' class='form-control' id='cookTime' name='cookTime' placeholder='HH:MM' aria-describedby='cookTimePrepend' required)
+                    div(class='invalid-feedback') Please enter cook time.
+                div(class='input-group col-lg-3')
+                    div(class='input-group-prepend')
+                        span(class='input-group-text' id='totalTimePrepend') Total Time:
+                    input(type='text' class='form-control' id='totalTime' name='totalTime' placeholder='HH:MM' aria-describedby='totalTimePrepend' required)
+                    div(class='invalid-feedback') Please enter total time.
+                div(class='col-md-3 form-group')
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='isGlutenFree' id='isGlutenFree' name='tags')
+                        label(class='form-check-label' for='isGlutenFree') Gluten Free
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='isDairyFree' id='isDairyFree' name='tags')
+                        label(class='form-check-label' for='isDairyFree') Diary Free
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='isVegetarian' id='isVegetarian' name='tags')
+                        label(class='form-check-label' for='isVegetarian') Vegetarian
+                    div(class='form-check')
+                        input(class='form-check-input' type='checkbox' value='isVegan' id='isVegan' name='tags')
+                        label(class='form-check-label' for='isVegan') Vegan
+            br
+            div(class='form-row')
+                div(class='form-group col-md-4')
+                    label(for="ingredients") List of Ingredients
+                    textarea(class='form-control' id='ingredients' name='ingredients' rows='20' placeholder='Ingredient 1\n\nIngredient 2\n\nIngredient 3\n\netc...' required)
+                div(class='form-group col-md-8')
+                    label(for='steps') List of Steps
+                    textarea(class='form-control' id='steps' name='steps' rows='20' placeholder='Step 1\n\nStep 2\n\nStep 3\n\netc...' required)
+            div(class='form-row')
+                div(class='col-md-2')
+                    label(for='recipeImg' ) Choose Recipe Image
+                div(class='col-md-10')
+                    input(type='file' id='recipeImg' name='recipeImg' required)
+            br
+            br
+            div(class='row')
+                div(class='col-md-6')
+                    button(type='reset' class='btn btn-block btn-outline-secondary') Reset
+                div(class='col-md-6')
+                    button(type='submit' class='btn btn-block btn-primary') Submit
+            br
