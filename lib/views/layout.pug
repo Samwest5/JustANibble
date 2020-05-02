@@ -1,16 +1,16 @@
 doctype html
 html
+    block link
+        -var active = '';
+    -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about', 'My Recipes' : '/recipes/my' };
     head
-        title= title
+        title= active
         meta(charset='utf-8')
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
         link(rel='stylesheet' type='text/css' href='/stylesheets/layout.css')
         if title == "Create Recipe"
             link(rel='stylesheet' type='text/css' href='/stylesheets/create-recipe.css')
     body
-        block link
-            -var active = '';
-        -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about', 'My Recipes' : '/recipes/my' };
         div(class='container-fluid')
             header
                 div(class='log')
@@ -24,18 +24,11 @@ html
                     h1 Just A Nibble
                 nav(class='navbar')
                     div(class='nav-center')
-                        each val, key in menu
-                            li
-                                if selected === key
-                                a.selected(href=val, title=key)= key
-                                else
-                                a(href=val, title=key)= key
                         each val, key in nav_menu
                             if active === key
-                                a.active(href=val, title=key)= key
-                        a(class='nav-link' href='/recipes') Satiate
-                        a(class='nav-link' href='/drinks') Quench
-                        a(class='nav-link' href='/about') About
+                                a.nav-link.active(href=val, title=key)= key
+                            else
+                                a.nav-link(href=val, title=key)= key
             block content
             footer
                 p Copyright © 2020

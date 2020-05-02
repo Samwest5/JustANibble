@@ -33,6 +33,14 @@ header {
   display:inline-block;
 }
 
+.active {
+  text-decoration: underline;
+}
+
+.nav-link:hover {
+  text-decoration:underline;
+}
+
 header.squish {
   padding:0;
   transition:0.3s;
