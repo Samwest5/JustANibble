@@ -8,6 +8,9 @@ html
         if title == "Create Recipe"
             link(rel='stylesheet' type='text/css' href='/stylesheets/create-recipe.css')
     body
+        block link
+            -var active = '';
+        -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about', 'My Recipes' : '/recipes/my' };
         div(class='container-fluid')
             header
                 div(class='log')
@@ -21,6 +24,15 @@ html
                     h1 Just A Nibble
                 nav(class='navbar')
                     div(class='nav-center')
+                        each val, key in menu
+                            li
+                                if selected === key
+                                a.selected(href=val, title=key)= key
+                                else
+                                a(href=val, title=key)= key
+                        each val, key in nav_menu
+                            if active === key
+                                a.active(href=val, title=key)= key
                         a(class='nav-link' href='/recipes') Satiate
                         a(class='nav-link' href='/drinks') Quench
                         a(class='nav-link' href='/about') About

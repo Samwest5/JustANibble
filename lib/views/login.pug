@@ -5,15 +5,17 @@ block content
         form(method="POST")
             div(class='form-group')
                 label(for='username') Username
-                input(type='text' class='form-control' id='username' name='username' placeholder='username')
-                div(class='invalid-feedback') Username already exists.
+                input(type='text' class='form-control' id='username' name='username' placeholder='username' value=(undefined))
+                div(class='invalid-feedback' id='usernameFeedback')
             div(class='form-group')
                 label(for='password') Password
                 small(class='text-muted')  8 or more characters.
                 input(type='password' class='form-control' id='password' name='password' placeholder='password')
-                div(class='invalid-feedback') Does not have enough characters.
+                div(class='invalid-feedback' id='passwordFeedback')
             div(class='row')
                 div(class='col-md-6')
                     button(class='btn btn-block btn-outline-secondary' id="register") Register
                 div(class='col-md-6')
                     button(class='btn btn-block btn-primary' id='login') Login
+        br
+        button(class='btn btn-block btn-outline-primary' id='logout') Logout
