@@ -1,7 +1,7 @@
 doctype html
 html
     block link
-        -var active = '';
+        -var active = 'Just A Nibble';
     -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about', 'My Recipes' : '/recipes/my' };
     head
         title= active
@@ -34,10 +34,11 @@ html
                 p Copyright © 2020
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
         script(src="https://kit.fontawesome.com/a86f0de539.js" crossorigin="anonymous")
+
         script
             include ../public/javascripts/layout.js
-        script 
-            include ../public/javascripts/login.js
+        //- script 
+        //-     include ../public/javascripts/login.js
         if active == 'Find A Drink'
             script
                 include ../public/javascripts/drinks.js

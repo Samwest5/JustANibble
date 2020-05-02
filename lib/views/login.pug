@@ -1,16 +1,19 @@
 extends layout.pug
 
+block link
+    -var active = title;
+
 block content
     main(class='container')
         form(method="POST")
             div(class='form-group')
                 label(for='username') Username
-                input(type='text' class='form-control' id='username' name='username' placeholder='username' value=(undefined))
-                div(class='invalid-feedback' id='usernameFeedback')
+                input(type='text' class='form-control' id='username' name='username' placeholder='username' required)
+                div(class='invalid-feedback' id='usernameFeedback')= username_error
             div(class='form-group')
                 label(for='password') Password
                 small(class='text-muted')  8 or more characters.
-                input(type='password' class='form-control' id='password' name='password' placeholder='password')
+                input(type='password' class='form-control' id='password' name='password' placeholder='password' required)
                 div(class='invalid-feedback' id='passwordFeedback')
             div(class='row')
                 div(class='col-md-6')
