@@ -23,4 +23,6 @@ block content
                 div(class='col-md-6')
                     button(type='submit' formaction='/auth/login' class='btn btn-block btn-primary' id='login') Login
         br
+        form#logoutForm(action='/auth/logout' method='POST')
+            input.logoutText(type='submit' value='Logout')
         button(class='btn btn-block btn-outline-primary' id='logout') Logout

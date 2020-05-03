@@ -80,3 +80,15 @@ footer {
   position:absolute;
   bottom:0;
 }
+
+.logoutText {
+  color:#D6733A;
+  border:none;
+  transition:0.1s;
+}
+
+.logoutText:hover {
+  color:#B45B28;
+  font-weight:bolder;
+  transition:0.2s;
+}
