@@ -7,6 +7,8 @@ module.exports = {
   nibbleDatabase: process.env.DATABASE,
   AWSAccessKeyId: process.env.AWSAccessKeyId,
   AWSSecretKey:   process.env.AWSSecretKey,
+  BucketName:     process.env.BUCKETNAME,
+  BucketRegion:   process.env.BUCKETREGION,
   TokenSecret:    process.env.TOKENSECRET,
-  SaltRounds:     Number(process.env.SALTROUNDS)
+  SaltRounds:     Number(process.env.SALTROUNDS),
 };
