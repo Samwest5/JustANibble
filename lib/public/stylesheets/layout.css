@@ -5,12 +5,14 @@
 }
 
 a {
-  color:#D6733A;
+  /* color:#D6733A; */
+  color:#000;
   transition:0.1s;
 }
 
 a:hover {
-  color:#B45B28;
+  /* color:#B45B28; */
+  color:#D6733A;
   text-decoration:none;
   font-weight:bolder;
   transition:0.2s;
@@ -22,9 +24,10 @@ header {
   top:0;
   width:100%;
   padding:2em;
-  background-color:#fff;
+  background-color:#FAEDE6;
   z-index:2000;
   transition:0.3s;
+  padding-bottom:1em;
 }
 
 .log {
@@ -47,6 +50,8 @@ header {
 
 .active {
   text-decoration: underline;
+  color:#D6733A;
+  font-weight:bolder;
 }
 
 header.squish {
@@ -82,6 +87,7 @@ footer {
 }
 
 .logoutText {
+  background-color:rgba(0,0,0,0);
   color:#D6733A;
   border:none;
   transition:0.1s;

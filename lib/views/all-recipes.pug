@@ -6,3 +6,30 @@ block link
 block content
     main(class='container')
         h1 All Recipes
+        form#searchAll(action="/recipes" method='POST')
+            input.form-control(type='text' id='filterKeyword' name='filterKeyword' placeholder='Filter By Keyword')
+            .form-check
+                input.form-check-input(type='checkbox' id='filterGluten' name='filterTag')
+                label.form-check-label(for='filterGluten') Gluten Free
+            .form-check
+                input.form-check-input(type='checkbox' id='filterVegetarian' name='filterTag')
+                label.form-check-label(for='filterVegetarian') Vegetarian
+            .form-check
+                input.form-check-input(type='checkbox' id='filterVegan' name='filterTag')
+                label.form-check-label(for='filterVegan') Vegan
+            .form-check
+                input.form-check-input(type='checkbox' id='filterDairy' name='filterTag')
+                label.form-check-label(for='filterDairy') Dairy Free
+            .form-inline
+                label(for='filterDifficulty') Filter by Difficulty: 
+                select.form-control(id='filterDifficulty' name='filterDifficulty')
+                    option(name='filterDifficulty' value='') All
+                    option(name='filterDifficulty' value='Easy') Easy
+                    option(name='filterDifficulty' value='Medium') Medium
+                    option(name='filterDifficulty' value='Hard') Hard
+            .form-inline
+                label(for='sortTime') Sort by Cook Time: 
+                select.form-control(id='sortTime' name='sortTime')
+                    option(name='sortTime' value='') Unsorted
+                    option(name='sortTime' value='shortToLong') Shortest to Longest
+                    option(name='sortTime' value='longToShort') Longest to Shortest

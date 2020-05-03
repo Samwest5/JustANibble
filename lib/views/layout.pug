@@ -2,7 +2,9 @@ doctype html
 html
     block link
         -var active = 'Just A Nibble';
-    -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about', 'My Recipes' : '/recipes/my' };
+    -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about'};
+    if username
+        -nav_menu['My Recipes'] = '/recipes/my';
     head
         title= active
         meta(charset='utf-8')
@@ -13,14 +15,20 @@ html
         div(class='container-fluid')
             header
                 div(class='log')
-                    if loggedin
+                    if username
                         form#logoutForm(action='/auth/logout' method='POST')
-                            input.logoutText(type='submit' value='Logout')
+                            small= username
+                            button.logoutText(type='submit') Log Out
+                                i(class="fas fa-sign-out-alt")
+                        
                     else
                         a(href="/auth/login") Login
                             i(class="fas fa-sign-in-alt")
                 h1
-                    a(href='/') Just A Nibble
+                    if active == 'Just A Nibble'
+                        a(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+                    else
+                        a(href='/') Just A Nibble
                 nav(class='navbar')
                     div(class='nav-center')
                         each val, key in nav_menu
