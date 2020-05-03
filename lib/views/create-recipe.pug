@@ -65,8 +65,12 @@ block content
             div(class='form-row')
                 div(class='col-md-2')
                     label(for='recipeImg' ) Choose Recipe Image
-                div(class='col-md-10')
+                div(class='col-md-2')
                     input(type='file' id='recipeImg' name='recipeImg' required)
+                .col-md-8
+                    div(class='form-check').text-right
+                        input(class='form-check-input' type='checkbox' value='isFavorite' id='isFavorite' name='tags')
+                        label(class='form-check-label' for='isFavorite') Chef's Favorite
             br
             br
             div(class='row')

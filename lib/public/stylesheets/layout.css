@@ -86,15 +86,15 @@ footer {
   bottom:0;
 }
 
-.logoutText {
+.logoutText, #loginButton {
   background-color:rgba(0,0,0,0);
   color:#D6733A;
   border:none;
   transition:0.1s;
 }
 
-.logoutText:hover {
-  color:#B45B28;
+.logoutText:hover, #loginButton:hover {
+  color:rgb(201, 108, 55);
   font-weight:bolder;
   transition:0.2s;
 }
