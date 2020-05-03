@@ -9,7 +9,7 @@ const s3 = new S3({
   region: BucketRegion
 });
 
-exports.s3upload = multer({
+exports.upload = multer({
   storage: multerS3({
     acl: "public-read",
     s3,
@@ -25,3 +25,16 @@ exports.s3upload = multer({
     },
   })
 });
+
+exports.delete = async (req, res, next) => {
+  const params = {
+    Bucket: BucketName,
+    Key: req.body.image_path
+  }
+  try {
+    await s3.headObject(params).promise();
+    await s3.s3.deleteObject(params).promise();
+  } catch (err) {
+    next(err);
+  }
+};
