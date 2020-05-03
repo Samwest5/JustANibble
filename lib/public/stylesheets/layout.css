@@ -4,6 +4,18 @@
   position:relative;
 }
 
+a {
+  color:#D6733A;
+  transition:0.1s;
+}
+
+a:hover {
+  color:#B45B28;
+  text-decoration:none;
+  font-weight:bolder;
+  transition:0.2s;
+}
+
 header {
   text-align:center;
   position:fixed;
@@ -37,10 +49,6 @@ header {
   text-decoration: underline;
 }
 
-.nav-link:hover {
-  text-decoration:underline;
-}
-
 header.squish {
   padding:0;
   transition:0.3s;
@@ -63,6 +71,7 @@ main {
 }
 
 footer {
+  /* color:#D6733A; */
   margin-top:1em;
   padding:1em;
   border-top: 0.5px solid rgb(238, 238, 238);

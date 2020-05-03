@@ -6,10 +6,9 @@ html
     head
         title= active
         meta(charset='utf-8')
-        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
-        link(rel='stylesheet' type='text/css' href='/stylesheets/layout.css')
-        if title == "Create Recipe"
-            link(rel='stylesheet' type='text/css' href='/stylesheets/create-recipe.css')
+        block styles
+            link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+            link(rel='stylesheet' type='text/css' href='/stylesheets/layout.css')
     body
         div(class='container-fluid')
             header
@@ -20,8 +19,8 @@ html
                     else
                         a(href="/auth/login") Login
                             i(class="fas fa-sign-in-alt")
-                a(href='/')
-                    h1 Just A Nibble
+                h1
+                    a(href='/') Just A Nibble
                 nav(class='navbar')
                     div(class='nav-center')
                         each val, key in nav_menu
@@ -35,10 +34,6 @@ html
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
         script(src="https://kit.fontawesome.com/a86f0de539.js" crossorigin="anonymous")
 
-        script
-            include ../public/javascripts/layout.js
-        //- script 
-        //-     include ../public/javascripts/login.js
-        if active == 'Find A Drink'
+        block scripts
             script
-                include ../public/javascripts/drinks.js
+                include ../public/javascripts/layout.js
