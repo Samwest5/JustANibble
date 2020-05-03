@@ -5,7 +5,7 @@ block link
 
 block content
     main(class='container')
-        form(method="POST")
+        form(method="POST" action='/auth/login' id='loginForm')
             if login_error
                 div(class='alert alert-danger' role='alert')= login_error
             div(class='form-group')
