@@ -5,4 +5,14 @@ block link
 
 block content
     main(class='container')
-        h1 My Recipes
+        .row
+            .col-sm-6
+                h1 My Recipes
+            .col-sm-6
+                h1.text-right
+                    a#createRecipe(href="/recipes/create").align-middle
+                        i.far.fa-plus-square
+
+block scripts
+    script
+        include ../public/javascripts/my-recipes.js

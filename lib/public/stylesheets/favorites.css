@@ -25,30 +25,6 @@ div.df {
     background-color:#44A7C2;
 }
 
-div.gf-outline {
-    color:black;
-    background-color:#D78CA2;
-    border:#D54C73 solid 1px;
-}
-
-div.v-outline {
-    color:black;
-    background-color:#9B628A;
-    border:#581845 solid 1px;
-}
-
-div.vg-outline {
-    background-color:#80AF80;
-    color:black;
-    border:#4CAF4D solid 1px;
-}
-
-div.df-outline {
-    color:black;
-    background-color:#86B7C4;
-    border:#44A7C2 solid 1px;
-}
-
 div.gf-muted {
     background-color:#D78CA2;
 }

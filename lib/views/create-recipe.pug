@@ -38,19 +38,22 @@ block content
                         span(class='input-group-text' id='totalTimePrepend') Total Time:
                     input(type='text' class='form-control' id='totalTime' name='totalTime' placeholder='HH:MM' aria-describedby='totalTimePrepend' required)
                     div(class='invalid-feedback') Please enter total time.
-                div(class='col-md-3 form-group')
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isGlutenFree' id='isGlutenFree' name='tags')
-                        label(class='form-check-label' for='isGlutenFree') Gluten Free
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isDairyFree' id='isDairyFree' name='tags')
-                        label(class='form-check-label' for='isDairyFree') Diary Free
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isVegetarian' id='isVegetarian' name='tags')
-                        label(class='form-check-label' for='isVegetarian') Vegetarian
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isVegan' id='isVegan' name='tags')
-                        label(class='form-check-label' for='isVegan') Vegan
+                div(class='col-lg-3 form-group')
+                    .col-sm-6.p-0.form-group
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isGlutenFree' id='isGlutenFree' name='tags')
+                            label(class='form-check-label' for='isGlutenFree') Gluten Free
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isVegetarian' id='isVegetarian' name='tags')
+                            label(class='form-check-label' for='isVegetarian') Vegetarian
+                    .col-sm-6.p-0.form-group
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isVegan' id='isVegan' name='tags')
+                            label(class='form-check-label' for='isVegan') Vegan
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isDairyFree' id='isDairyFree' name='tags')
+                            label(class='form-check-label' for='isDairyFree') Diary Free
+                        
             br
             div(class='form-row')
                 div(class='form-group col-md-4')
