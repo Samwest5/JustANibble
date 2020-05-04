@@ -9,7 +9,27 @@ block link
 block content
     main(class='container')
         h1 Chef's favorites
-        -console.log(recipes);
+        //- -console.log(JSON.stringify(recipes));
+        //- -var recipes = JSON.stringify(recipes);
+        each recipe in recipes
+            -var id = recipe.recipe_id;
+            if recipe.is_vegan
+                -console.log('yeetmyniggadudehahahahhasmdbitchkjadssa')
+            //- -console.log(recipe.author_id)
+            //- -console.log(recipe.recipe_id)
+            //- -console.log(recipe.image_path)
+            //- -console.log(recipe.is_vegan)
+            //- -console.log(recipe.recipe_text.steps)
+            //- -console.log(recipe.recipe_text.ingredients)
+            //- -console.log(recipe.difficulty)
+            //- -console.log(JSON.parse(recipe.recipe_text).ingredients)
+    //- is_vegan BOOLEAN NOT NULL DEFAULT FALSE,
+    //- is_vegetarian BOOLEAN NOT NULL DEFAULT FALSE,
+    //- is_dairy_free BOOLEAN NOT NULL DEFAULT FALSE,
+    //- is_gluten_free BOOLEAN NOT NULL DEFAULT FALSE,
+    //- is_favorite BOOLEAN NOT NULL DEFAULT FALSE,
+        
+
         div.row
             div.col-lg-4.my-3
                 div.card
