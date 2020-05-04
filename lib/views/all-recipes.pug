@@ -43,3 +43,32 @@ block content
                         option(name='sortTime' value='') Unsorted
                         option(name='sortTime' value='shortToLong') Shortest to Longest
                         option(name='sortTime' value='longToShort') Longest to Shortest
+                .form-group.m-2.px-2.mt-4.ml-5
+                    button.btn.btn-outline-secondary(type='reset') Reset
+                .form-group.m-2.px-2.mt-4
+                    button.btn.btn-primary(type='submit') Apply
+        hr
+        each recipe in recipes
+            .col-lg-12
+            .card.mx-auto.mb-5(style='width:40em;')
+                img.card-img-top(src=bucketurl + recipe.image_path)
+                if recipe.is_glutenFree || recipe.is_vegetarian || recipe.is_vegan || recipe.is_dairyFree
+                    div.card-header.text-center
+                        if recipe.is_glutenFree
+                            div.tag.gf GF
+                        if recipe.is_vegetarian
+                            div.tag.v V
+                        if recipe.is_vegan
+                            div.tag.vg VG
+                        if recipe.is_dairyFree
+                            div.tag.df DF
+                div.card-body
+                    h5.card-title.text-center 
+                        a(href='/recipes/' + recipe.recipe_id)= recipe.recipe_name
+                    hr
+                    div.row
+                        div.col-sm-6.text-left.text-muted= recipe.difficulty
+                        -
+                            var total = recipe.overall_time;
+                            total = total.slice(0, -3);
+                        div.col-sm-6.text-right.text-muted= total

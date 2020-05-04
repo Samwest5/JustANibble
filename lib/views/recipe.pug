@@ -48,6 +48,17 @@ block content
                     .col-sm-3.text-right
                         h6.d-inline.text-secondary Total: 
                         h6.d-inline.text-secondary.font-italic= total
+                br
+                if username && !is_writer
+                    .row
+                        .col-lg-12
+                            form(action='/recipes/' + recipe.recipe_id method='POST')
+                                button(type='submit' class='btn btn-block btn-warning') Add to My Recipes
+                if is_writer
+                    .row
+                        .col-lg-12
+                            a.btn.btn-block.btn-warning(href='/recipes/' + recipe.recipe_id + '/edit') Edit Recipe
+
         br
         br
                 
@@ -69,7 +80,6 @@ block content
                 .col-lg-12
                     form(action='/recipes/' + recipe.recipe_id method='POST')
                         button(type='submit' class='btn btn-block btn-outline-secondary') Add to My Recipes
-        -console.log(is_writer)
         if is_writer
             .row
                 .col-lg-12

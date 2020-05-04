@@ -6,12 +6,16 @@ block link
 block content
     main(class='container')
         .row
-            .col-sm-6
-                h1 My Recipes
-            .col-sm-6
-                h1.text-right
-                    a#createRecipe(href="/recipes/create").align-middle
-                        i.far.fa-plus-square
+            if is_writer
+                .col-sm-6
+                    h1 My Recipes
+                .col-sm-6
+                    h1.text-right
+                        a#createRecipe(href="/recipes/create").align-middle
+                            i.fas.fa-plus-circle
+            else
+                .col-lg-12
+                    h1 My Recipes
         .row
         each recipe in recipes
             .col-lg-12
