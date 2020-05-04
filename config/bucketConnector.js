@@ -34,6 +34,7 @@ exports.delete = async (req, res, next) => {
   try {
     await s3.headObject(params).promise();
     await s3.deleteObject(params).promise();
+    next();
   } catch (err) {
     next(err);
   }
