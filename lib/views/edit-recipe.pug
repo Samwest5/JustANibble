@@ -5,7 +5,7 @@ block link
 
 block content
     main(class='container')
-        form(method="POST" enctype='multipart/form-data')
+        form(method="POST")
             div(class='form-row')
                 div(class='form-group col-md-8')
                     label(for='recipe-name') Recipe Name
@@ -62,7 +62,6 @@ block content
             div(class='form-row')
                 -var ingredients = JSON.parse(recipe.recipe_text).ingredients;
                 -var steps = JSON.parse(recipe.recipe_text).steps;
-                -console.log(ingredients)
                 div(class='form-group col-md-4')
                     label(for="ingredients") List of Ingredients
                     textarea(class='form-control' id='ingredients' name='ingredients' rows='20' placeholder='Ingredient 1;\n\nIngredient 2;\n\nIngredient 3;\n\netc...;\n\nLast Ingredient' required) 
@@ -89,9 +88,11 @@ block content
             br
             br
             div(class='row')
+                -var deleteURL = '/recipes/' + recipe.recipe_id + '/delete'
+                -var editURL = '/recipes/' + recipe.recipe_id + '/edit'
                 div(class='col-md-6')
-                    button(type='submit' action='/recipes/' + recipe.recipe_id + '/delete' class='btn btn-block btn-outline-danger') Delete
+                    button(type='submit' formaction=deleteURL class='btn btn-block btn-outline-danger') Delete
                     //- TODO: change disabled= recipe.user_id != current user/writer's id
                 div(class='col-md-6')
-                    button(type='submit' action='recipes/' + recipe.recipe_id + '/edit' class='btn btn-block btn-primary') Update
+                    button(type='submit' formaction=editURL class='btn btn-block btn-primary') Update
             br
