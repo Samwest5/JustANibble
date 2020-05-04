@@ -1,8 +1,71 @@
 extends layout.pug
 
 block link 
-    -var active = :id;
+    -var active = recipe.recipe_name;
 
 block content
     main(class='container')
-        h1 recipe/:id
+        .row
+            .col-lg-5
+                img(style='max-width:26em;' src=bucketurl + recipe.image_path)
+            .col-lg-7
+                .row
+                    if recipe.is_glutenFree || recipe.is_vegetarian || recipe.is_vegan || recipe.is_dairyFree
+                        .col-sm-9
+                            h1= recipe.recipe_name
+                        .col-sm-3.text-right
+                            if recipe.is_glutenFree
+                                div.tag.gf GF
+                            if recipe.is_vegetarian
+                                div.tag.v V
+                            if recipe.is_vegan
+                                div.tag.vg VG
+                            if recipe.is_dairyFree
+                                div.tag.df DF
+                    else
+                        .col-lg-12
+                            h1= recipe.recipe_name
+                .row
+                    .col-sm-3
+                        h6.d-inline.text-secondary Level: 
+                        if recipe.difficulty == 'Medium'
+                            h6.d-inline.text-secondary.font-italic Med
+                        else
+                            h6.d-inline.text-secondary.font-italic= recipe.difficulty
+                    -
+                        var prep = recipe.prep_time;
+                        prep = prep.slice(0, -3);
+                        var cook = recipe.cook_time;
+                        cook = cook.slice(0, -3);
+                        var total = recipe.overall_time;
+                        total = total.slice(0, -3);
+                    .col-sm-3.text-right
+                        h6.d-inline.text-secondary Prep: 
+                        h6.d-inline.text-secondary.font-italic= prep
+                    .col-sm-3.text-right
+                        h6.d-inline.text-secondary Cook: 
+                        h6.d-inline.text-secondary.font-italic= cook
+                    .col-sm-3.text-right
+                        h6.d-inline.text-secondary Total: 
+                        h6.d-inline.text-secondary.font-italic= total
+        br
+        br
+                
+        .row
+            -var ingredients = JSON.parse(recipe.recipe_text).ingredients;
+            -var steps = JSON.parse(recipe.recipe_text).steps;
+            .col-lg-4
+                h3.text-secondary Ingredients
+                ul
+                    each ingredient in ingredients
+                        li= ingredient
+            .col-lg-8
+                h3.text-secondary Steps
+                ol
+                    each step in steps
+                        li= step
+        if username
+            .row
+                .col-lg-12
+                    form(action='/recipes/' + recipe.recipe_id method='POST')
+                        button(type='submit' class='btn btn-block btn-outline-secondary') Add to My Recipes

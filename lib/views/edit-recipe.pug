@@ -9,58 +9,83 @@ block content
             div(class='form-row')
                 div(class='form-group col-md-8')
                     label(for='recipe-name') Recipe Name
-                    input(type='text' class='form-control' id='recipeName' name='recipeName' placeholder='Recipe Name Here' required)
+                    input(type='text' class='form-control' id='recipeName' name='recipeName' placeholder='Recipe Name Here' value=recipe.recipe_name required)
                     div(class='invalid-feedback') Please enter a recipe name.
                 div(class='form-group col-md-4')
                     label(for='difficulty') Difficulty
                     select(id='difficulty' class='form-control' name='difficulty' required)
                         option(name='difficulty' value='' selected disabled) Choose ...
-                        option(name='difficulty' value='Easy') Easy
-                        option(name='difficulty' value='Medium') Medium
-                        option(name='difficulty' value='Hard') Hard
+                        option(name='difficulty' value='Easy' selected= recipe.difficulty == 'Easy') Easy
+                        option(name='difficulty' value='Medium' selected= recipe.difficulty == 'Medium') Medium
+                        option(name='difficulty' value='Hard' selected= recipe.difficulty == 'Hard') Hard
                     div(class='invalid-feedback') Please select a difficulty level.
             div(class='form-inline')
+                -
+                    var prep = recipe.prep_time;
+                    prep = prep.slice(0, -3);
+                    var cook = recipe.cook_time;
+                    cook = cook.slice(0, -3);
+                    var total = recipe.overall_time;
+                    total = total.slice(0, -3);
                 div(class='input-group col-lg-3')
                     div(class='input-group-prepend')
                         span(class='input-group-text' id='prepTimePrepend') Prep Time:
-                    input(type='text' class='form-control' id='prepTime' name='prepTime' placeholder='HH:MM' aria-describedby='prepTimePrepend' required)
+                    input(type='text' class='form-control' id='prepTime' name='prepTime' placeholder='HH:MM' aria-describedby='prepTimePrepend' value=prep required)
                     div(class='invalid-feedback') Please enter prep time.
                 div(class='input-group col-lg-3')
                     div(class='input-group-prepend')
                         span(class='input-group-text' id='cookTimePrepend') Cook Time:
-                    input(type='text' class='form-control' id='cookTime' name='cookTime' placeholder='HH:MM' aria-describedby='cookTimePrepend' required)
+                    input(type='text' class='form-control' id='cookTime' name='cookTime' placeholder='HH:MM' aria-describedby='cookTimePrepend' value=cook required)
                     div(class='invalid-feedback') Please enter cook time.
                 div(class='input-group col-lg-3')
                     div(class='input-group-prepend')
                         span(class='input-group-text' id='totalTimePrepend') Total Time:
-                    input(type='text' class='form-control' id='totalTime' name='totalTime' placeholder='HH:MM' aria-describedby='totalTimePrepend' required)
+                    input(type='text' class='form-control' id='totalTime' name='totalTime' placeholder='HH:MM' aria-describedby='totalTimePrepend' value=total required)
                     div(class='invalid-feedback') Please enter total time.
-                div(class='col-md-3 form-group')
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isGlutenFree' id='isGlutenFree' name='tags')
-                        label(class='form-check-label' for='isGlutenFree') Gluten Free
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isDairyFree' id='isDairyFree' name='tags')
-                        label(class='form-check-label' for='isDairyFree') Diary Free
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isVegetarian' id='isVegetarian' name='tags')
-                        label(class='form-check-label' for='isVegetarian') Vegetarian
-                    div(class='form-check')
-                        input(class='form-check-input' type='checkbox' value='isVegan' id='isVegan' name='tags')
-                        label(class='form-check-label' for='isVegan') Vegan
+                div(class='col-lg-3 form-group')
+                    .col-sm-6.p-0.form-group
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isGlutenFree' id='isGlutenFree' name='tags' checked= recipe.is_glutenFree)
+                            label(class='form-check-label' for='isGlutenFree') Gluten Free
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isVegetarian' id='isVegetarian' name='tags' checked= recipe.is_vegetarian)
+                            label(class='form-check-label' for='isVegetarian') Vegetarian
+                    .col-sm-6.p-0.form-group
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isVegan' id='isVegan' name='tags' checked= recipe.is_vegan)
+                            label(class='form-check-label' for='isVegan') Vegan
+                        div(class='form-check')
+                            input(class='form-check-input' type='checkbox' value='isDairyFree' id='isDairyFree' name='tags' checked= recipe.is_dairyFree)
+                            label(class='form-check-label' for='isDairyFree') Dairy Free
+                        
             br
             div(class='form-row')
+                -var ingredients = JSON.parse(recipe.recipe_text).ingredients;
+                -var steps = JSON.parse(recipe.recipe_text).steps;
+                -console.log(ingredients)
                 div(class='form-group col-md-4')
                     label(for="ingredients") List of Ingredients
-                    textarea(class='form-control' id='ingredients' name='ingredients' rows='20' placeholder='Ingredient 1\n\nIngredient 2\n\nIngredient 3\n\netc...' required)
+                    textarea(class='form-control' id='ingredients' name='ingredients' rows='20' placeholder='Ingredient 1;\n\nIngredient 2;\n\nIngredient 3;\n\netc...;\n\nLast Ingredient' required) 
+                        each ingredient in ingredients
+                            unless ingredient == ingredients[ingredients.length - 1]
+                                -ingredient = ingredient + ';\n\n';
+                            | #{ingredient}
                 div(class='form-group col-md-8')
                     label(for='steps') List of Steps
-                    textarea(class='form-control' id='steps' name='steps' rows='20' placeholder='Step 1\n\nStep 2\n\nStep 3\n\netc...' required)
+                    textarea(class='form-control' id='steps' name='steps' rows='20' placeholder='Step 1;\n\nStep 2;\n\nStep 3;\n\netc...;\n\nLast Step' required)
+                        each step in steps
+                            unless step == steps[steps.length - 1]
+                                -step = step + ';\n\n';
+                            | #{step}
             div(class='form-row')
                 div(class='col-md-2')
-                    label(for='recipeImg' ) Choose Recipe Image
-                div(class='col-md-10')
+                    label(for='recipeImg' ) Cannot Change Image
+                div(class='col-md-2')
                     input(type='file' id='recipeImg' name='recipeImg' disabled)
+                .col-md-8
+                    div(class='form-check').text-right
+                        input(class='form-check-input' type='checkbox' value='isFavorite' id='isFavorite' name='tags' checked= recipe.is_favorite)
+                        label(class='form-check-label' for='isFavorite') Chef's Favorite
             br
             br
             div(class='row')

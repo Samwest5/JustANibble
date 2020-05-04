@@ -1,19 +1,15 @@
 extends layout.pug
 
-append styles
-    link(rel='stylesheet' type='text/css' href='/stylesheets/favorites.css')
-
 block link 
     -var active = 'Just A Nibble';
 
 block content
     main(class='container')
         h1 Chef's favorites
-
         each recipe in recipes
             .col-lg-12
             .card.mx-auto.mb-5(style='width:40em;')
-                img.card-img-top(src='https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg')
+                img.card-img-top(src=bucketurl + recipe.image_path)
                 if recipe.is_glutenFree || recipe.is_vegetarian || recipe.is_vegan || recipe.is_dairyFree
                     div.card-header.text-center
                         if recipe.is_glutenFree
@@ -30,4 +26,7 @@ block content
                     hr
                     div.row
                         div.col-sm-6.text-left.text-muted= recipe.difficulty
-                        div.col-sm-6.text-right.text-muted= recipe.overall_time
+                        -
+                            var total = recipe.overall_time;
+                            total = total.slice(0, -3);
+                        div.col-sm-6.text-right.text-muted= total
