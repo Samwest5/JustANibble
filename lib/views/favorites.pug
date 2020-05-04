@@ -9,6 +9,28 @@ block link
 block content
     main(class='container')
         h1 Chef's favorites
+
+        each recipe in recipes
+            .col-lg-12
+            .card.mx-auto.mb-5(style='width:40em;')
+                img.card-img-top(src='https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg')
+                div.card-header.text-center
+                    if recipe.is_glutenFree
+                        div.tag.gf GF
+                    if recipe.is_vegetarian
+                        div.tag.v V
+                    if recipe.is_vegan
+                        div.tag.vg VG
+                    if recipe.is_dairyFree
+                        div.tag.df DF
+                div.card-body
+                    h5.card-title.text-center 
+                        a(href='/recipes/#{id}') recipe name
+                    hr
+                    div.row
+                        div.col-sm-6.text-left.text-muted difficulty
+                        div.col-sm-6.text-right.text-muted total time
+        
         //- -console.log(JSON.stringify(recipes));
         //- -var recipes = JSON.stringify(recipes);
         each recipe in recipes
@@ -23,12 +45,27 @@ block content
             //- -console.log(recipe.recipe_text.ingredients)
             //- -console.log(recipe.difficulty)
             //- -console.log(JSON.parse(recipe.recipe_text).ingredients)
-    //- is_vegan BOOLEAN NOT NULL DEFAULT FALSE,
-    //- is_vegetarian BOOLEAN NOT NULL DEFAULT FALSE,
-    //- is_dairy_free BOOLEAN NOT NULL DEFAULT FALSE,
-    //- is_gluten_free BOOLEAN NOT NULL DEFAULT FALSE,
-    //- is_favorite BOOLEAN NOT NULL DEFAULT FALSE,
+            //- is_vegan BOOLEAN NOT NULL DEFAULT FALSE,
+            //- is_vegetarian BOOLEAN NOT NULL DEFAULT FALSE,
+            //- is_dairy_free BOOLEAN NOT NULL DEFAULT FALSE,
+            //- is_gluten_free BOOLEAN NOT NULL DEFAULT FALSE,
+            //- is_favorite BOOLEAN NOT NULL DEFAULT FALSE,
         
+        .col-lg-12
+            .card.mx-auto.mb-5(style='width:40em;')
+                img.card-img-top(src='https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg')
+                div.card-header.text-center
+                    div.tag.gf GF
+                    div.tag.v V
+                    div.tag.vg VG
+                    div.tag.df DF
+                div.card-body
+                    h5.card-title.text-center 
+                        a(href='/recipes/#{id}') recipe name
+                    hr
+                    div.row
+                        div.col-sm-6.text-left.text-muted difficulty
+                        div.col-sm-6.text-right.text-muted total time
 
         div.row
             div.col-lg-4.my-3
