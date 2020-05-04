@@ -28,10 +28,7 @@ block content
                 .row
                     .col-sm-3
                         h6.d-inline.text-secondary Level: 
-                        if recipe.difficulty == 'Medium'
-                            h6.d-inline.text-secondary.font-italic Med
-                        else
-                            h6.d-inline.text-secondary.font-italic= recipe.difficulty
+                        h6.d-inline.text-secondary.font-italic= recipe.difficulty
                     -
                         var prep = recipe.prep_time;
                         prep = prep.slice(0, -3);
@@ -75,12 +72,3 @@ block content
                 ol
                     each step in steps
                         li= step
-        if username
-            .row
-                .col-lg-12
-                    form(action='/recipes/' + recipe.recipe_id method='POST')
-                        button(type='submit' class='btn btn-block btn-outline-secondary') Add to My Recipes
-        if is_writer
-            .row
-                .col-lg-12
-                    a.btn.btn-block.btn-outline-secondary(href='/recpes/' + recipe.recipe_id + '/edit') Edit Button

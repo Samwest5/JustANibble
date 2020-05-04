@@ -91,6 +91,7 @@ block content
             div(class='row')
                 div(class='col-md-6')
                     button(type='submit' action='/recipes/' + recipe.recipe_id + '/delete' class='btn btn-block btn-outline-danger') Delete
+                    //- TODO: change disabled= recipe.user_id != current user/writer's id
                 div(class='col-md-6')
                     button(type='submit' action='recipes/' + recipe.recipe_id + '/edit' class='btn btn-block btn-primary') Update
             br
