@@ -9,6 +9,7 @@ module.exports = {
   AWSSecretKey:   process.env.AWSSecretKey,
   BucketName:     process.env.BUCKETNAME,
   BucketRegion:   process.env.BUCKETREGION,
+  BucketURL:      process.env.BUCKETURL,
   TokenSecret:    process.env.TOKENSECRET,
-  SaltRounds:     Number(process.env.SALTROUNDS),
+  SaltRounds:     Number(process.env.SALTROUNDS)
 };
