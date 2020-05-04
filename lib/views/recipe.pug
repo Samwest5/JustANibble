@@ -10,17 +10,17 @@ block content
                 img(style='max-width:26em;' src=bucketurl + recipe.image_path)
             .col-lg-7
                 .row
-                    if recipe.is_glutenFree || recipe.is_vegetarian || recipe.is_vegan || recipe.is_dairyFree
+                    if recipe.is_gluten_free || recipe.is_vegetarian || recipe.is_vegan || recipe.is_dairy_free
                         .col-sm-9
                             h1= recipe.recipe_name
                         .col-sm-3.text-right
-                            if recipe.is_glutenFree
+                            if recipe.is_gluten_free
                                 div.tag.gf GF
                             if recipe.is_vegetarian
                                 div.tag.v V
                             if recipe.is_vegan
                                 div.tag.vg VG
-                            if recipe.is_dairyFree
+                            if recipe.is_dairy_free
                                 div.tag.df DF
                     else
                         .col-lg-12
