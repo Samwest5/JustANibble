@@ -90,7 +90,7 @@ block content
             br
             div(class='row')
                 div(class='col-md-6')
-                    button(type='reset' class='btn btn-block btn-outline-secondary') Reset
+                    button(type='submit' action='/recipes/' + recipe.recipe_id + '/delete' class='btn btn-block btn-outline-danger') Delete
                 div(class='col-md-6')
-                    button(type='submit' class='btn btn-block btn-primary') Submit
+                    button(type='submit' action='recipes/' + recipe.recipe_id + '/edit' class='btn btn-block btn-primary') Update
             br

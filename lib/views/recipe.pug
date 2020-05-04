@@ -69,3 +69,8 @@ block content
                 .col-lg-12
                     form(action='/recipes/' + recipe.recipe_id method='POST')
                         button(type='submit' class='btn btn-block btn-outline-secondary') Add to My Recipes
+        -console.log(is_writer)
+        if is_writer
+            .row
+                .col-lg-12
+                    a.btn.btn-block.btn-outline-secondary(href='/recpes/' + recipe.recipe_id + '/edit') Edit Button
