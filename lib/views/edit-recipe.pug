@@ -88,12 +88,11 @@ block content
             br
             br
             div(class='row')
-                -var deleteURL = '/recipes/' + recipe.recipe_id + '/delete';
-                -var editURL = 'recipes/' + recipe.recipe_id + '/edit';
-                -console.log(deleteURL);
+                -var deleteURL = '/recipes/' + recipe.recipe_id + '/delete'
+                -var editURL = '/recipes/' + recipe.recipe_id + '/edit'
                 div(class='col-md-6')
-                    button(type='submit' action='/recipes/10/delete' class='btn btn-block btn-outline-danger') Delete
+                    button(type='submit' formaction=deleteURL class='btn btn-block btn-outline-danger') Delete
                     //- TODO: change disabled= recipe.user_id != current user/writer's id
                 div(class='col-md-6')
-                    button(type='submit' action=editURL class='btn btn-block btn-primary') Update
+                    button(type='submit' formaction=editURL class='btn btn-block btn-primary') Update
             br
