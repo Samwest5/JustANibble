@@ -23,26 +23,26 @@ block content
                     ul.list-group.list-group-horizontal-sm
                         li.list-group-item.py-2
                             .form-check
-                                input.form-check-input(type='checkbox' id='filterGluten' name='filterTag' value='is_glutenFree')
+                                input.form-check-input(type='checkbox' id='filterGluten' name='tags' value='isGlutenFree')
                                 label.form-check-label(for='filterGluten') GF
                         li.list-group-item.py-2
                             .form-check
-                                input.form-check-input(type='checkbox' id='filterVegetarian' name='filterTag' value='is_vegetarian')
+                                input.form-check-input(type='checkbox' id='filterVegetarian' name='tags' value='isVegetarian')
                                 label.form-check-label(for='filterVegetarian') V
                         li.list-group-item.py-2
                             .form-check
-                                input.form-check-input(type='checkbox' id='filterVegan' name='filterTag' value='is_vegan')
+                                input.form-check-input(type='checkbox' id='filterVegan' name='tags' value='isVegan')
                                 label.form-check-label(for='filterVegan') VG
                         li.list-group-item.py-2
                             .form-check
-                                input.form-check-input(type='checkbox' id='filterDairy' name='filterTag' value='is_dairyFree')
+                                input.form-check-input(type='checkbox' id='filterDairy' name='tags' value='isDairyFree')
                                 label.form-check-label(for='filterDairy') DF
                 .form-group.m-2
                     label.mr-2(for='sortTime') Cook Time: 
                     select.form-control(id='sortTime' name='sortTime')
                         option(name='sortTime' value='') Unsorted
-                        option(name='sortTime' value='shortToLong') Shortest to Longest
-                        option(name='sortTime' value='longToShort') Longest to Shortest
+                        option(name='sortTime' value='asc') Shortest to Longest
+                        option(name='sortTime' value='desc') Longest to Shortest
                 .form-group.m-2.px-2.mt-4.ml-5
                     button.btn.btn-outline-secondary(type='reset') Reset Filters
                 .form-group.m-2.px-2.mt-4
@@ -52,15 +52,15 @@ block content
             .col-lg-12
             .card.mx-auto.mb-5(style='width:40em;')
                 img.card-img-top(src=bucketurl + recipe.image_path)
-                if recipe.is_glutenFree || recipe.is_vegetarian || recipe.is_vegan || recipe.is_dairyFree
+                if recipe.is_gluten_free || recipe.is_vegetarian || recipe.is_vegan || recipe.is_dairy_free
                     div.card-header.text-center
-                        if recipe.is_glutenFree
+                        if recipe.is_gluten_free
                             div.tag.gf GF
                         if recipe.is_vegetarian
                             div.tag.v V
                         if recipe.is_vegan
                             div.tag.vg VG
-                        if recipe.is_dairyFree
+                        if recipe.is_dairy_free
                             div.tag.df DF
                 div.card-body
                     h5.card-title.text-center 
