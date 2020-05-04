@@ -24,18 +24,46 @@ html
                     else
                         a#loginButton(href="/auth/login") Login
                             i(class="fas fa-sign-in-alt")
-                h1
-                    if active == 'Just A Nibble'
-                        a(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
-                    else
-                        a(href='/') Just A Nibble
-                nav(class='navbar')
-                    div(class='nav-center')
-                        each val, key in nav_menu
-                            if active === key
-                                a.nav-link.active(href=val, title=key)= key
-                            else
-                                a.nav-link(href=val, title=key)= key
+                //- div#stuff.mx-auto.pt-5
+                //-     div(style='display:inline-block; height:9em; border:solid black 1px;')
+                //-         img#nibbles.mt-n5(style='height:100%;' src='images/nibblesCheese.png')
+                //-     div(style='display:inline-block; border:solid black 1px;')
+                
+                div#titleNav
+                    h1
+                        if active == 'Just A Nibble'
+                            a#siteTitle(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+                        else
+                            a#siteTitle(href='/') Just A Nibble
+                    nav(class='navbar')
+                        div(class='nav-center')
+                            each val, key in nav_menu
+                                if active === key
+                                    a.nav-link.active(href=val, title=key)= key
+                                else
+                                    a.nav-link(href=val, title=key)= key
+                    img#nibbles(src='images/nibblesCheese.png')
+                
+                
+                
+                //- .row
+                //-     .col-md-4.text-right
+                //-         img#nibbles(style='height:8em;' src='images/nibblesCheese.png')
+                //-     .col-md-4
+                //-         div#titleNav
+                //-             h1
+                //-                 if active == 'Just A Nibble'
+                //-                     a#siteTitle(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+                //-                 else
+                //-                     a#siteTitle(href='/') Just A Nibble
+                //-             nav(class='navbar')
+                //-                 div(class='nav-center')
+                //-                     each val, key in nav_menu
+                //-                         if active === key
+                //-                             a.nav-link.active(href=val, title=key)= key
+                //-                         else
+                //-                             a.nav-link(href=val, title=key)= key
+                //-     .col-md-4
             block content
             footer
                 p Copyright © 2020
@@ -45,3 +73,61 @@ html
         block scripts
             script
                 include ../public/javascripts/layout.js
+
+
+//- doctype html
+//- html
+//-     block link
+//-         -var active = 'Just A Nibble';
+//-     -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about'};
+//-     if username
+//-         -nav_menu['My Recipes'] = '/recipes/my';
+//-     head
+//-         title= active
+//-         meta(charset='utf-8')
+//-         block styles
+//-             link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+//-             link(rel='stylesheet' type='text/css' href='/stylesheets/layout.css')
+//-     body
+//-         div(class='container-fluid')
+//-             header
+//-                 div(class='log')
+//-                     if username
+//-                         form#logoutForm(action='/auth/logout' method='POST')
+//-                             small= username
+//-                             button.logoutText(type='submit') Log Out
+//-                                 i(class="fas fa-sign-out-alt")
+                        
+//-                     else
+//-                         a#loginButton(href="/auth/login") Login
+//-                             i(class="fas fa-sign-in-alt")
+//-                 h1
+//-                     //- if active == 'Just A Nibble'
+//-                     //-     a(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+//-                     //- else
+//-                     //-     a(href='/') Just A Nibble
+//-                     //- if active == 'Just A Nibble'
+//-                     //-     a.ml-5.mr-n5.inline.align-bottom#siteTitle(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+//-                     //- else
+//-                     //-     a.ml-5.mr-n5.inline.align-bottom#siteTitle(href='/') Just A Nibble
+//-                     //- img.mr-n5.inline#nibbles(src='images/nibblesCheese.png')
+//-                     if active == 'Just A Nibble'
+//-                         a#siteTitle(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+//-                     else
+//-                         a#siteTitle(href='/') Just A Nibble
+//-                 nav(class='navbar')
+//-                     div(class='nav-center')
+//-                         each val, key in nav_menu
+//-                             if active === key
+//-                                 a.nav-link.active(href=val, title=key)= key
+//-                             else
+//-                                 a.nav-link(href=val, title=key)= key
+//-             block content
+//-             footer
+//-                 p Copyright © 2020
+//-         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+//-         script(src="https://kit.fontawesome.com/a86f0de539.js" crossorigin="anonymous")
+
+//-         block scripts
+//-             script
+//-                 include ../public/javascripts/layout.js

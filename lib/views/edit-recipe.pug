@@ -45,17 +45,17 @@ block content
                 div(class='col-lg-3 form-group')
                     .col-sm-6.p-0.form-group
                         div(class='form-check')
-                            input(class='form-check-input' type='checkbox' value='isGlutenFree' id='isGlutenFree' name='tags' checked= recipe.is_glutenFree)
+                            input(class='form-check-input' type='checkbox' value='isGlutenFree' id='isGlutenFree' name='tags' checked= recipe.is_gluten_free==true)
                             label(class='form-check-label' for='isGlutenFree') Gluten Free
                         div(class='form-check')
-                            input(class='form-check-input' type='checkbox' value='isVegetarian' id='isVegetarian' name='tags' checked= recipe.is_vegetarian)
+                            input(class='form-check-input' type='checkbox' value='isVegetarian' id='isVegetarian' name='tags' checked= recipe.is_vegetarian==true)
                             label(class='form-check-label' for='isVegetarian') Vegetarian
                     .col-sm-6.p-0.form-group
                         div(class='form-check')
-                            input(class='form-check-input' type='checkbox' value='isVegan' id='isVegan' name='tags' checked= recipe.is_vegan)
+                            input(class='form-check-input' type='checkbox' value='isVegan' id='isVegan' name='tags' checked= recipe.is_vegan==true)
                             label(class='form-check-label' for='isVegan') Vegan
                         div(class='form-check')
-                            input(class='form-check-input' type='checkbox' value='isDairyFree' id='isDairyFree' name='tags' checked= recipe.is_dairyFree)
+                            input(class='form-check-input' type='checkbox' value='isDairyFree' id='isDairyFree' name='tags' checked= recipe.is_dairy_free==true)
                             label(class='form-check-label' for='isDairyFree') Dairy Free
                         
             br
@@ -83,7 +83,7 @@ block content
                     input(type='file' id='recipeImg' name='recipeImg' disabled)
                 .col-md-8
                     div(class='form-check').text-right
-                        input(class='form-check-input' type='checkbox' value='isFavorite' id='isFavorite' name='tags' checked= recipe.is_favorite)
+                        input(class='form-check-input' type='checkbox' value='isFavorite' id='isFavorite' name='tags' checked= recipe.is_favorite==true)
                         label(class='form-check-label' for='isFavorite') Chef's Favorite
             br
             br

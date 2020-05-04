@@ -1,34 +1,59 @@
 doctype html
 html
+    block link
+        -var active = 'Just A Nibble';
+    -var nav_menu = { 'All Recipes' : '/recipes', 'Find A Drink' : '/drinks', 'About Us' : '/about'};
+    if username
+        -nav_menu['My Recipes'] = '/recipes/my';
     head
-        title= title
+        title= active
         meta(charset='utf-8')
-        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
-        link(rel='stylesheet' type='text/css' href='/stylesheets/layout-test.css')
-        if title == "Create Recipe"
-            link(rel='stylesheet' type='text/css' href='/stylesheets/create-recipe.css')
-        
+        block styles
+            link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+            link(rel='stylesheet' type='text/css' href='/stylesheets/layout.css')
     body
         div(class='container-fluid')
             header
                 div(class='log')
-                    if loggedin
-                        a(href='/') #[username]
-                            i(class='fas fa-sign-out-alt')
+                    if username
+                        form#logoutForm(action='/auth/logout' method='POST')
+                            small= username
+                            button.logoutText(type='submit') Log Out
+                                i(class="fas fa-sign-out-alt")
+                        
                     else
-                        a(href="/recipes/create") Login
+                        a#loginButton(href="/auth/login") Login
                             i(class="fas fa-sign-in-alt")
-                a(href='/')
-                    h1 Just A Nibble
-                nav(class='navbar')
-                    div(class='nav-center')
-                        a(class='nav-link' href='/recipes') Satiate
-                        a(class='nav-link' href='/drinks') Quench
-                        a(class='nav-link' href='/about') About
+                div(style='border:solid black 1px;')
+                    img#nibbles(src='images/nibblesCheese.png')
+                div(style='border:solid black 1px;')
+                    h1
+                        //- if active == 'Just A Nibble'
+                        //-     a(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+                        //- else
+                        //-     a(href='/') Just A Nibble
+                        //- if active == 'Just A Nibble'
+                        //-     a.ml-5.mr-n5.inline.align-bottom#siteTitle(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+                        //- else
+                        //-     a.ml-5.mr-n5.inline.align-bottom#siteTitle(href='/') Just A Nibble
+                        //- img.mr-n5.inline#nibbles(src='images/nibblesCheese.png')
+                        if active == 'Just A Nibble'
+                            a#siteTitle(href='/' style='font-weight:bolder; color:#D6733A;') Just A Nibble
+                        else
+                            a#siteTitle(href='/') Just A Nibble
+                    nav(class='navbar')
+                        div(class='nav-center')
+                            each val, key in nav_menu
+                                if active === key
+                                    a.nav-link.active(href=val, title=key)= key
+                                else
+                                    a.nav-link(href=val, title=key)= key
             block content
             footer
                 p Copyright © 2020
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
         script(src="https://kit.fontawesome.com/a86f0de539.js" crossorigin="anonymous")
-        script
-            include ../public/javascripts/create-recipe.js
+
+        block scripts
+            script
+                include ../public/javascripts/layout.js

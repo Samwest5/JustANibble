@@ -54,8 +54,29 @@ header {
   font-weight:bolder;
 }
 
+#titleNav {
+  position:relative;
+  display:inline-block;
+}
+
+#nibbles {
+  height:120px;
+  position:absolute;
+  top:-20px;
+  left:-50px;
+  transition:0.3s;
+}
+
+#nibbles.squish {
+  height:85px;
+  top:0px;
+  left:-30px;
+  transition:0.3s;
+}
+
 header.squish {
   padding:0;
+  padding-top:10px;
   transition:0.3s;
   border-bottom: 0.5px solid rgb(238, 238, 238);
 }
